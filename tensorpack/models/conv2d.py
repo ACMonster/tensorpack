@@ -16,7 +16,7 @@ __all__ = ['Conv2D', 'Deconv2D']
 def Conv2D(x, out_channel, kernel_shape,
            padding='SAME', stride=1,
            W_init=None, b_init=None,
-           nl=None, split=1, use_bias=True):
+           nl=None, split=1, use_bias=True, need_var=False):
     """
     2D convolution on 4D inputs.
 
@@ -63,7 +63,10 @@ def Conv2D(x, out_channel, kernel_shape,
     if nl is None:
         logger.warn("[DEPRECATED] Default ReLU nonlinearity for Conv2D and FullyConnected will be deprecated. Please use argscope instead.")
         nl = tf.nn.relu
-    return nl(tf.nn.bias_add(conv, b) if use_bias else conv, name='output')
+    if need_var:
+        return nl(tf.nn.bias_add(conv, b) if use_bias else conv, name='output'), W
+    else:
+        return nl(tf.nn.bias_add(conv, b) if use_bias else conv, name='output')
 
 class StaticDynamicShape(object):
     def __init__(self, static, dynamic):

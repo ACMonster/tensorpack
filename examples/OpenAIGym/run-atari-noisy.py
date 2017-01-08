@@ -41,10 +41,10 @@ class Model(ModelDesc):
                 InputVar(tf.float32, (None,), 'futurereward') ]
 
     def _get_NN_prediction(self, image):
-	noise = tf.random_normal(tf.shape(image), mean = 0.0, stddev = 3.0)
-	image = image + noise
-	image = image / 255.0
-	with argscope(Conv2D, nl=tf.nn.relu):
+        noise = tf.random_normal(tf.shape(image), mean = 0.0, stddev = 3.0)
+        image = image + noise
+        image = image / 255.0
+        with argscope(Conv2D, nl=tf.nn.relu):
             l = Conv2D('conv0', image, out_channel=32, kernel_shape=5)
             l = MaxPooling('pool0', l, 2)
             l = Conv2D('conv1', l, out_channel=32, kernel_shape=5)
