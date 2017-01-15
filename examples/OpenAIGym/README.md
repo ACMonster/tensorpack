@@ -2,6 +2,16 @@
 
 Implemented A3C in [Asynchronous Methods for Deep Reinforcement Learning](http://arxiv.org/abs/1602.01783).
 
+### Regularized A3C
+
+1. Download the pre-trained model Pong-v0.tfmodel from [model zoo](https://drive.google.com/open?id=0B9IPQTvr2BBkS0VhX0xmS1c5aFk) into this directory.
+2. To run regularized A3C in the ideal environment: `./train-atari-noisy-reg.py --env Pong-v0 --gpu 0 --task train --load Pong-v0.tfmodel --reg 0.001`
+3. To run regularized A3C in the 10-Gaussian environment: `./train-atari-noisy-reg.py --env Pong-v0 --gpu 0 --task train --load Pong-v0.tfmodel --reg 0.001 --noise 10`
+
+### A3C with Denoise Layer
+
+`./train-atari-noisy-with-denoise-layer.py --env Pong-v0 --gpu 0 --task train --load Pong-v0.tfmodel`
+
 ### To train on an Atari game:
 
 `./train-atari.py --env Breakout-v0 --gpu 0`

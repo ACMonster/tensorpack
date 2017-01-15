@@ -14,6 +14,10 @@ They're not only for demonstration of the framework -- you can train them and re
 + [Asynchronous Advantage Actor-Critic(A3C) with demos on OpenAI Gym](examples/OpenAIGym)
 + [char-rnn language model](examples/char-rnn)
 
+## Final Project for Advanced Applications of Machine Learning
+
+To reproduce the results, install all dependencies as specified below, and see examples/OpenAIGym for detailed instructions.
+
 ## Features:
 
 Describe your training task with three components:
